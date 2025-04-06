@@ -17,13 +17,25 @@
     body {
       background: linear-gradient(to bottom, #6e45e2, #88d3ce);
       color: #fff;
-      padding: 30px 20px;
+      padding: 20px;
       min-height: 100vh;
+    }
+
+    .header-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      width: 300px;
+      margin-bottom: 15px;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
       font-size: 2.5em;
       font-weight: 600;
       color: #fff;
@@ -33,7 +45,6 @@
 
     .subtitle {
       text-align: center;
-      margin-top: -30px;
       margin-bottom: 30px;
       font-size: 1.2em;
       opacity: 0.9;
@@ -50,18 +61,30 @@
     .event-card {
       background: rgba(255,255,255,0.15);
       backdrop-filter: blur(10px);
-      padding: 25px;
       border-radius: 15px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
       border: 1px solid rgba(255,255,255,0.2);
       animation: fadeInUp 0.8s ease-in;
+      overflow: hidden;
     }
 
     .event-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 12px 28px rgba(0,0,0,0.2);
       background: rgba(255,255,255,0.2);
+    }
+
+    .event-logo {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.2);
+      padding: 20px;
+    }
+
+    .event-content {
+      padding: 20px;
     }
 
     .event-title {
@@ -108,18 +131,19 @@
     }
 
     .register-button {
-      margin-top: 10px;
-      padding: 12px 25px;
+      width: 100%;
+      padding: 12px;
       background-color: #ff7e5f;
       color: #fff;
       border: none;
-      border-radius: 50px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 1em;
       font-weight: 600;
       transition: all 0.3s ease;
-      display: inline-flex;
+      display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
     }
@@ -182,6 +206,10 @@
     }
 
     @media (max-width: 768px) {
+      .logo {
+        width: 250px;
+      }
+      
       h1 {
         font-size: 2rem;
       }
@@ -205,95 +233,118 @@
         padding: 20px 15px;
       }
       
+      .logo {
+        width: 200px;
+      }
+      
       h1 {
         font-size: 1.8rem;
       }
       
-      .event-card {
-        padding: 20px;
+      .event-content {
+        padding: 15px;
       }
       
       .event-title {
         font-size: 1.3rem;
       }
+      
+      .event-logo {
+        height: 150px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>🔥 Promethean 2025</h1>
-  <p class="subtitle">AI & Data Science Department Events</p>
+  <div class="header-container">
+    <img src="Promethean_Logo_2025.png" alt="Promethean 2025 Logo" class="logo">
+    <h1>AI & Data Science Events</h1>
+    <p class="subtitle">Department of Artificial Intelligence & Data Science</p>
+  </div>
 
   <div class="event-grid">
     <!-- Escape Room -->
     <div class="event-card" style="animation-delay: 0.1s">
-      <div class="event-title"><span>🧩</span> Escape Room</div>
-      <div class="event-details">
-        <p><strong>⏰ Time:</strong> 10:00 AM – 3:00 PM</p>
-        <p><strong>📍 Location:</strong> ELN Block, 4th Floor</p>
-        <p><strong>🏆 Category:</strong> Competitive Team Event</p>
+      <img src="escape.png" alt="Escape Room Logo" class="event-logo">
+      <div class="event-content">
+        <div class="event-title"><span>🧩</span> Escape Room</div>
+        <div class="event-details">
+          <p><strong>⏰ Time:</strong> 10:00 AM – 3:00 PM</p>
+          <p><strong>📍 Location:</strong> ELN Block, 4th Floor</p>
+          <p><strong>🏆 Category:</strong> Competitive Team Event</p>
+        </div>
+        <div class="tags">
+          <span class="tag">AI Challenge</span>
+          <span class="tag">Puzzle Solving</span>
+          <span class="tag">Teamwork</span>
+        </div>
+        <button class="register-button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScuNtiGROUCYZsCxXFuZbwRfbF0isgRRj43t7FIwZGsmZSTxA/viewform?usp=dialog', '_blank')">
+          <i class="fas fa-user-plus"></i> Register Now
+        </button>
       </div>
-      <div class="tags">
-        <span class="tag">AI Challenge</span>
-        <span class="tag">Puzzle Solving</span>
-        <span class="tag">Teamwork</span>
-      </div>
-      <button class="register-button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScuNtiGROUCYZsCxXFuZbwRfbF0isgRRj43t7FIwZGsmZSTxA/viewform?usp=dialog', '_blank')">
-        <i class="fas fa-user-plus"></i> Register
-      </button>
     </div>
 
     <!-- Cipher Chronicles -->
     <div class="event-card" style="animation-delay: 0.2s">
-      <div class="event-title"><span>🕵️</span> Cipher Chronicles</div>
-      <div class="event-details">
-        <p><strong>⏰ Time:</strong> 10:00 AM – 1:30 PM</p>
-        <p><strong>📍 Location:</strong> ELN Block, BVRIT</p>
-        <p><strong>🏆 Category:</strong> Competitive Coding</p>
+      <img src="Cipher chronicles logo.png" alt="Cipher Chronicles Logo" class="event-logo">
+      <div class="event-content">
+        <div class="event-title"><span>🕵️</span> Cipher Chronicles</div>
+        <div class="event-details">
+          <p><strong>⏰ Time:</strong> 10:00 AM – 1:30 PM</p>
+          <p><strong>📍 Location:</strong> ELN Block, BVRIT</p>
+          <p><strong>🏆 Category:</strong> Competitive Coding</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Cryptography</span>
+          <span class="tag">Problem Solving</span>
+          <span class="tag">Algorithmic</span>
+        </div>
+        <button class="register-button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSecsWmXaKEB-I09oiW5qOW8iYit9f9C9Is4VmD8We6w6jg8AQ/viewform?usp=dialog', '_blank')">
+          <i class="fas fa-user-plus"></i> Register Now
+        </button>
       </div>
-      <div class="tags">
-        <span class="tag">Cryptography</span>
-        <span class="tag">Problem Solving</span>
-        <span class="tag">Algorithmic</span>
-      </div>
-      <button class="register-button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSecsWmXaKEB-I09oiW5qOW8iYit9f9C9Is4VmD8We6w6jg8AQ/viewform?usp=dialog', '_blank')">
-        <i class="fas fa-user-plus"></i> Register
-      </button>
     </div>
 
     <!-- TechTangle -->
     <div class="event-card" style="animation-delay: 0.3s">
-      <div class="event-title"><span>🧠</span> TechTangle</div>
-      <div class="event-details">
-        <p><strong>⏰ Time:</strong> 10:30 AM – 1:00 PM</p>
-        <p><strong>📍 Location:</strong> ELN Block</p>
-        <p><strong>🏆 Category:</strong> Tech Meme War</p>
+      <img src="TechTangle.png" alt="TechTangle Logo" class="event-logo">
+      <div class="event-content">
+        <div class="event-title"><span>🧠</span> TechTangle</div>
+        <div class="event-details">
+          <p><strong>⏰ Time:</strong> 10:30 AM – 1:00 PM</p>
+          <p><strong>📍 Location:</strong> ELN Block</p>
+          <p><strong>🏆 Category:</strong> Tech Meme War</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Humor</span>
+          <span class="tag">Creativity</span>
+          <span class="tag">Tech Culture</span>
+        </div>
+        <button class="register-button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfgJflT-ffwdM_LSzYaSGguVYi-6_a9Ugt774yWL4QafAmYhA/viewform', '_blank')">
+          <i class="fas fa-user-plus"></i> Register Now
+        </button>
       </div>
-      <div class="tags">
-        <span class="tag">Humor</span>
-        <span class="tag">Creativity</span>
-        <span class="tag">Tech Culture</span>
-      </div>
-      <button class="register-button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfgJflT-ffwdM_LSzYaSGguVYi-6_a9Ugt774yWL4QafAmYhA/viewform', '_blank')">
-        <i class="fas fa-user-plus"></i> Register
-      </button>
     </div>
 
     <!-- Reel Craft -->
     <div class="event-card" style="animation-delay: 0.4s">
-      <div class="event-title"><span>🎬</span> Reel Craft</div>
-      <div class="event-details">
-        <p><strong>⏰ Time:</strong> 10:00 AM – 3:00 PM</p>
-        <p><strong>📍 Location:</strong> ELN Block</p>
-        <p><strong>🏆 Category:</strong> Creative Competition</p>
+      <img src="REEL_CRAFT_LOGO.png" alt="Reel Craft Logo" class="event-logo">
+      <div class="event-content">
+        <div class="event-title"><span>🎬</span> Reel Craft</div>
+        <div class="event-details">
+          <p><strong>⏰ Time:</strong> 10:00 AM – 3:00 PM</p>
+          <p><strong>📍 Location:</strong> ELN Block</p>
+          <p><strong>🏆 Category:</strong> Creative Competition</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Storytelling</span>
+          <span class="tag">AI Prompts</span>
+          <span class="tag">Video</span>
+        </div>
+        <button class="register-button" onclick="window.open('https://forms.gle/wZCUv5ViYhWY7GyB7', '_blank')">
+          <i class="fas fa-user-plus"></i> Register Now
+        </button>
       </div>
-      <div class="tags">
-        <span class="tag">Storytelling</span>
-        <span class="tag">AI Prompts</span>
-        <span class="tag">Video</span>
-      </div>
-      <button class="register-button" onclick="window.open('https://forms.gle/wZCUv5ViYhWY7GyB7', '_blank')">
-        <i class="fas fa-user-plus"></i> Register
-      </button>
     </div>
   </div>
 
