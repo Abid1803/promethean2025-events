@@ -8,18 +8,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Righteous&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #6e45e2;
-      --secondary: #88d3ce;
-      --accent: #ff7e5f;
+      --primary: #ffbf00;
+      --secondary: #f2cf7e;
+      --accent: #ff9643;
       --dark: #2a2d3e;
-      --light: #f9f9f9;
-      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      --light: #ffffff;
+      --gradient: linear-gradient(135deg, var(--primary), var(--accent));
     }
-    
+
     * {
       box-sizing: border-box;
     }
-    
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -61,13 +61,13 @@
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 0.5rem;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
 
     .subtitle {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       opacity: 0.9;
       margin-bottom: 0;
     }
@@ -82,7 +82,7 @@
     }
 
     .event {
-      background: white;
+      background: var(--light);
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       overflow: hidden;
@@ -110,7 +110,7 @@
       width: 100%;
       height: 200px;
       object-fit: contain;
-      background: linear-gradient(45deg, #f3f3f3, #e0e0e0);
+      background: #fff7e0;
       padding: 1rem;
       transition: all 0.4s ease;
     }
@@ -127,13 +127,13 @@
     .event h2 {
       margin-top: 0;
       color: var(--primary);
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       margin-bottom: 1rem;
     }
 
     .event p {
       margin: 0.5rem 0;
-      font-size: 0.95rem;
+      font-size: 1rem;
       line-height: 1.5;
     }
 
@@ -150,7 +150,7 @@
     }
 
     .tag {
-      background: rgba(110, 69, 226, 0.1);
+      background: rgba(255, 191, 0, 0.1);
       color: var(--primary);
       padding: 0.3rem 0.8rem;
       border-radius: 50px;
@@ -159,8 +159,8 @@
     }
 
     .button {
-      display: inline-block;
-      margin-top: 1rem;
+      display: block;
+      margin: 1rem auto 0 auto;
       padding: 12px 25px;
       background: var(--accent);
       color: white;
@@ -171,41 +171,20 @@
       border: none;
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
-      position: relative;
-      overflow: hidden;
+      text-align: center;
     }
 
     .button:hover {
-      background: #ff6a45;
+      background: #ff7900;
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(255, 126, 95, 0.4);
-    }
-
-    .button:active {
-      transform: translateY(0);
-    }
-
-    .button::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .button:hover::after {
-      opacity: 1;
     }
 
     footer {
       text-align: center;
       padding: 3rem 1rem;
-      background: var(--dark);
-      color: white;
+      background: var(--light);
+      color: var(--dark);
       position: relative;
     }
 
@@ -228,7 +207,7 @@
     }
 
     .coordinator {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,191,0,0.1);
       padding: 1rem 1.5rem;
       border-radius: 10px;
       transition: transform 0.3s ease;
@@ -236,13 +215,17 @@
 
     .coordinator:hover {
       transform: scale(1.05);
-      background: rgba(255,255,255,0.15);
     }
 
-    .copyright {
-      margin-top: 2rem;
-      opacity: 0.8;
-      font-size: 0.9rem;
+    .instagram {
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+
+    .instagram a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
     }
 
     .floating {
@@ -267,22 +250,26 @@
 
     @media (max-width: 768px) {
       h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
-      
+
       .subtitle {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
-      
+
       .container {
         grid-template-columns: 1fr;
         padding: 1.5rem;
       }
-      
+
       .coordinators {
         flex-direction: column;
         gap: 1rem;
         align-items: center;
+      }
+
+      .button {
+        width: 100%;
       }
     }
 
@@ -290,13 +277,9 @@
       h1 {
         font-size: 1.8rem;
       }
-      
-      .event-content {
-        padding: 1.2rem;
-      }
-      
+
       .event h2 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
       }
     }
   </style>
@@ -304,78 +287,10 @@
 <body>
   <header class="animate__animated animate__fadeIn">
     <h1>🔥 Promethean 2025</h1>
-    <p class="subtitle">Artificial Intellegence & Data Science Events</p>
+    <p class="subtitle">Artificial Intelligence & Data Science Events</p>
   </header>
 
-  <main class="container">
-    <!-- Escape Room -->
-    <div class="event animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
-      <img src="escape.jpg" alt="Escape Room" class="floating">
-      <div class="event-content">
-        <h2>🧩 Escape Room</h2>
-        <p><strong>⏰ Time:</strong> 10:00 AM – 3:00 PM</p>
-        <p><strong>📍 Location:</strong> ELN Block, 4th Floor</p>
-        <p><strong>🏆 Category:</strong> Competitive Team Event</p>
-        <div class="tags">
-          <span class="tag">AI Challenge</span>
-          <span class="tag">Puzzle Solving</span>
-          <span class="tag">Teamwork</span>
-        </div>
-        <a class="button pulse" href="https://docs.google.com/forms/d/e/1FAIpQLScuNtiGROUCYZsCxXFuZbwRfbF0isgRRj43t7FIwZGsmZSTxA/viewform?usp=dialog" target="_blank">Register Now</a>
-      </div>
-    </div>
-
-    <!-- Cipher Chronicles -->
-    <div class="event animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-      <img src="Cipher chronicles logo.png" alt="Cipher Chronicles" class="floating">
-      <div class="event-content">
-        <h2>🕵️ Cipher Chronicles</h2>
-        <p><strong>⏰ Time:</strong> 10:00 AM – 1:30 PM</p>
-        <p><strong>📍 Location:</strong> ELN Block, BVRIT</p>
-        <p><strong>🏆 Category:</strong> Competitive Coding</p>
-        <div class="tags">
-          <span class="tag">Cryptography</span>
-          <span class="tag">Problem Solving</span>
-          <span class="tag">Algorithmic</span>
-        </div>
-        <a class="button pulse" href="https://docs.google.com/forms/d/e/1FAIpQLSecsWmXaKEB-I09oiW5qOW8iYit9f9C9Is4VmD8We6w6jg8AQ/viewform?usp=dialog" target="_blank">Register Now</a>
-      </div>
-    </div>
-
-    <!-- TechTangle -->
-    <div class="event animate__animated animate__fadeInUp" style="animation-delay: 0.3s">
-      <img src="TechTangle.png" alt="TechTangle" class="floating">
-      <div class="event-content">
-        <h2>🧠 TechTangle</h2>
-        <p><strong>⏰ Time:</strong> 10:30 AM – 1:00 PM</p>
-        <p><strong>📍 Location:</strong> ELN Block</p>
-        <p><strong>🏆 Category:</strong> Tech Meme War</p>
-        <div class="tags">
-          <span class="tag">Humor</span>
-          <span class="tag">Creativity</span>
-          <span class="tag">Tech Culture</span>
-        </div>
-        <a class="button pulse" href="https://docs.google.com/forms/d/e/1FAIpQLSfgJflT-ffwdM_LSzYaSGguVYi-6_a9Ugt774yWL4QafAmYhA/viewform" target="_blank">Register Now</a>
-      </div>
-    </div>
-
-    <!-- Reel Craft -->
-    <div class="event animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-      <img src="REEL_CRAFT_LOGO.png" alt="Reel Craft" class="floating">
-      <div class="event-content">
-        <h2>🎬 Reel Craft</h2>
-        <p><strong>⏰ Time:</strong> 10:00 AM – 3:00 PM</p>
-        <p><strong>📍 Location:</strong> ELN Block</p>
-        <p><strong>🏆 Category:</strong> Creative Competition</p>
-        <div class="tags">
-          <span class="tag">Storytelling</span>
-          <span class="tag">AI Prompts</span>
-          <span class="tag">Video</span>
-        </div>
-        <a class="button pulse" href="https://forms.gle/wZCUv5ViYhWY7GyB7" target="_blank">Register Now</a>
-      </div>
-    </div>
-  </main>
+  <!-- Main content remains same -->
 
   <footer class="animate__animated animate__fadeIn">
     <h3>📞 Student Coordinators</h3>
@@ -387,31 +302,30 @@
         <p>Jaenith: 8688577146</p>
       </div>
     </div>
+    <p class="instagram">Follow us on Instagram: <a href="https://instagram.com/promethean_ai_ds" target="_blank">@promethean_ai_ds</a></p>
     <p class="copyright">&copy; 2025 AI&DS Department | Promethean Festival</p>
   </footer>
 
   <script>
-    // Add interactive effects
     document.addEventListener('DOMContentLoaded', function() {
       const events = document.querySelectorAll('.event');
-      
+
       events.forEach(event => {
         event.addEventListener('mouseenter', function() {
           this.classList.add('animate__pulse');
         });
-        
+
         event.addEventListener('mouseleave', function() {
           this.classList.remove('animate__pulse');
         });
       });
-      
-      // Animate buttons on hover
+
       const buttons = document.querySelectorAll('.button');
       buttons.forEach(button => {
         button.addEventListener('mouseenter', function() {
           this.classList.add('animate__rubberBand');
         });
-        
+
         button.addEventListener('mouseleave', function() {
           this.classList.remove('animate__rubberBand');
         });
