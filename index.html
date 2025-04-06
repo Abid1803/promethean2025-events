@@ -4,24 +4,72 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Promethean 2025 – Events by AI&DS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Righteous&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #6e45e2;
+      --secondary: #88d3ce;
+      --accent: #ff7e5f;
+      --dark: #2a2d3e;
+      --light: #f9f9f9;
+      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f9f9f9;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
     }
 
     header {
       text-align: center;
-      padding: 1.5rem;
-      background-color: #212121;
-      color: #fff;
+      padding: 2rem 1.5rem;
+      background: var(--gradient);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+      animation: shine 8s infinite linear;
+    }
+
+    @keyframes shine {
+      0% { transform: rotate(30deg) translate(-10%, -10%); }
+      100% { transform: rotate(30deg) translate(10%, 10%); }
+    }
+
+    h1, h2, h3 {
+      font-family: 'Righteous', cursive;
+      margin: 0;
     }
 
     h1 {
-      margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 0;
     }
 
     .container {
@@ -29,149 +77,346 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
     .event {
-      background: #fff;
+      background: white;
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       overflow: hidden;
-      transition: transform 0.3s ease;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .event:hover {
-      transform: scale(1.02);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .event::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
     }
 
     .event img {
       width: 100%;
-      max-height: 200px;
+      height: 200px;
       object-fit: contain;
-      background-color: #f4f4f4;
+      background: linear-gradient(45deg, #f3f3f3, #e0e0e0);
       padding: 1rem;
+      transition: all 0.4s ease;
+    }
+
+    .event:hover img {
+      transform: scale(1.05);
     }
 
     .event-content {
-      padding: 1rem 1.5rem;
+      padding: 1.5rem;
+      position: relative;
     }
 
     .event h2 {
       margin-top: 0;
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .event p {
-      margin: 0.25rem 0;
+      margin: 0.5rem 0;
       font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .event p strong {
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .tag {
+      background: rgba(110, 69, 226, 0.1);
+      color: var(--primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
     }
 
     .button {
       display: inline-block;
       margin-top: 1rem;
-      padding: 10px 20px;
-      background-color: #007BFF;
+      padding: 12px 25px;
+      background: var(--accent);
       color: white;
       text-decoration: none;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
+      position: relative;
+      overflow: hidden;
     }
 
     .button:hover {
-      background-color: #0056b3;
+      background: #ff6a45;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 126, 95, 0.4);
+    }
+
+    .button:active {
+      transform: translateY(0);
+    }
+
+    .button::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .button:hover::after {
+      opacity: 1;
     }
 
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      background-color: #212121;
-      color: #eee;
+      padding: 3rem 1rem;
+      background: var(--dark);
+      color: white;
+      position: relative;
     }
 
-    @media (max-width: 600px) {
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
+    }
+
+    .coordinators {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+
+    .coordinator {
+      background: rgba(255,255,255,0.1);
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .coordinator:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.15);
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 126, 95, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 126, 95, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 126, 95, 0); }
+    }
+
+    @media (max-width: 768px) {
       h1 {
-        font-size: 1.5rem;
+        font-size: 2rem;
       }
+      
+      .subtitle {
+        font-size: 1rem;
+      }
+      
+      .container {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+      }
+      
+      .coordinators {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+    }
 
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
       .event-content {
-        padding: 1rem;
+        padding: 1.2rem;
       }
-
+      
       .event h2 {
-        font-size: 1.2rem;
-      }
-
-      .button {
-        width: 100%;
-        text-align: center;
+        font-size: 1.3rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>🔐 Promethean 2025 – AI&DS Events</h1>
-    <p>Organized by the Department of AI&DS</p>
+  <header class="animate__animated animate__fadeIn">
+    <h1>🔥 Promethean 2025</h1>
+    <p class="subtitle">AI & Data Science Department Events</p>
   </header>
 
   <main class="container">
     <!-- Escape Room -->
-    <div class="event">
-      <img src="escape.jpg" alt="Escape Room">
+    <div class="event animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
+      <img src="escape.jpg" alt="Escape Room" class="floating">
       <div class="event-content">
-        <h2>🧩 Escape Room</h2>
-        <p><strong>Time:</strong> 10:00 AM – 3:00 PM</p>
-        <p><strong>Location:</strong> ELN Block, 4th Floor</p>
-        <p><strong>Category:</strong> Competitive</p>
-        <p><strong>Tags:</strong> ai&ds, escaperoom, technical</p>
-        <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLScuNtiGROUCYZsCxXFuZbwRfbF0isgRRj43t7FIwZGsmZSTxA/viewform?usp=dialog" target="_blank">Register</a>
+        <h2>🧩 AI Escape Room</h2>
+        <p><strong>⏰ Time:</strong> 10:00 AM – 3:00 PM</p>
+        <p><strong>📍 Location:</strong> ELN Block, 4th Floor</p>
+        <p><strong>🏆 Category:</strong> Competitive Team Event</p>
+        <div class="tags">
+          <span class="tag">AI Challenge</span>
+          <span class="tag">Puzzle Solving</span>
+          <span class="tag">Teamwork</span>
+        </div>
+        <a class="button pulse" href="https://docs.google.com/forms/d/e/1FAIpQLScuNtiGROUCYZsCxXFuZbwRfbF0isgRRj43t7FIwZGsmZSTxA/viewform?usp=dialog" target="_blank">Register Now</a>
       </div>
     </div>
 
     <!-- Cipher Chronicles -->
-    <div class="event">
-      <img src="Cipher chronicles logo.png" alt="Cipher Chronicles">
+    <div class="event animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+      <img src="Cipher chronicles logo.png" alt="Cipher Chronicles" class="floating">
       <div class="event-content">
         <h2>🕵️ Cipher Chronicles</h2>
-        <p><strong>Time:</strong> 10:00 AM – 1:30 PM</p>
-        <p><strong>Location:</strong> ELN Block, BV RIT Campus</p>
-        <p><strong>Category:</strong> Competitive</p>
-        <p><strong>Tags:</strong> ai&ds, cipher chronicles, technical</p>
-        <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSecsWmXaKEB-I09oiW5qOW8iYit9f9C9Is4VmD8We6w6jg8AQ/viewform?usp=dialog" target="_blank">Register</a>
+        <p><strong>⏰ Time:</strong> 10:00 AM – 1:30 PM</p>
+        <p><strong>📍 Location:</strong> ELN Block, BV RIT Campus</p>
+        <p><strong>🏆 Category:</strong> Competitive Coding</p>
+        <div class="tags">
+          <span class="tag">Cryptography</span>
+          <span class="tag">Problem Solving</span>
+          <span class="tag">Algorithmic</span>
+        </div>
+        <a class="button pulse" href="https://docs.google.com/forms/d/e/1FAIpQLSecsWmXaKEB-I09oiW5qOW8iYit9f9C9Is4VmD8We6w6jg8AQ/viewform?usp=dialog" target="_blank">Register Now</a>
       </div>
     </div>
 
     <!-- TechTangle -->
-    <div class="event">
-      <img src="TechTangle.png" alt="TechTangle">
+    <div class="event animate__animated animate__fadeInUp" style="animation-delay: 0.3s">
+      <img src="TechTangle.png" alt="TechTangle" class="floating">
       <div class="event-content">
         <h2>🧠 TechTangle</h2>
-        <p><strong>Time:</strong> 10:30 AM – 1:00 PM</p>
-        <p><strong>Location:</strong> ELN Block</p>
-        <p><strong>Category:</strong> Competitive</p>
-        <p><strong>Tags:</strong> ai&ds, techtangle, memewar, technical</p>
-        <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSfgJflT-ffwdM_LSzYaSGguVYi-6_a9Ugt774yWL4QafAmYhA/viewform" target="_blank">Register</a>
+        <p><strong>⏰ Time:</strong> 10:30 AM – 1:00 PM</p>
+        <p><strong>📍 Location:</strong> ELN Block</p>
+        <p><strong>🏆 Category:</strong> Tech Meme War</p>
+        <div class="tags">
+          <span class="tag">Humor</span>
+          <span class="tag">Creativity</span>
+          <span class="tag">Tech Culture</span>
+        </div>
+        <a class="button pulse" href="https://docs.google.com/forms/d/e/1FAIpQLSfgJflT-ffwdM_LSzYaSGguVYi-6_a9Ugt774yWL4QafAmYhA/viewform" target="_blank">Register Now</a>
       </div>
     </div>
 
     <!-- Reel Craft -->
-    <div class="event">
-      <img src="REEL_CRAFT_LOGO.png" alt="Reel Craft">
+    <div class="event animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+      <img src="REEL_CRAFT_LOGO.png" alt="Reel Craft" class="floating">
       <div class="event-content">
         <h2>🎬 Reel Craft</h2>
-        <p><strong>Time:</strong> 10:00 AM – 3:00 PM</p>
-        <p><strong>Location:</strong> ELN Block</p>
-        <p><strong>Note:</strong> Image size should be less than 500 KB</p>
-        <p><strong>Category:</strong> Competitive</p>
-        <p><strong>Tags:</strong> AI & DS, Prompt Engineering, Storytelling</p>
-        <a class="button" href="https://forms.gle/wZCUv5ViYhWY7GyB7" target="_blank">Register</a>
+        <p><strong>⏰ Time:</strong> 10:00 AM – 3:00 PM</p>
+        <p><strong>📍 Location:</strong> ELN Block</p>
+        <p><strong>🏆 Category:</strong> Creative Competition</p>
+        <div class="tags">
+          <span class="tag">Storytelling</span>
+          <span class="tag">AI Prompts</span>
+          <span class="tag">Video</span>
+        </div>
+        <a class="button pulse" href="https://forms.gle/wZCUv5ViYhWY7GyB7" target="_blank">Register Now</a>
       </div>
     </div>
   </main>
 
-  <footer>
+  <footer class="animate__animated animate__fadeIn">
     <h3>📞 Student Coordinators</h3>
-    <p>Ashlesha: 6302862336</p>
-    <p>Jaenith: 8688577146</p>
-    <p>&copy; 2025 AI&DS Department</p>
+    <div class="coordinators">
+      <div class="coordinator">
+        <p>Ashlesha: 6302862336</p>
+      </div>
+      <div class="coordinator">
+        <p>Jaenith: 8688577146</p>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2025 AI&DS Department | Promethean Festival</p>
   </footer>
+
+  <script>
+    // Add interactive effects
+    document.addEventListener('DOMContentLoaded', function() {
+      const events = document.querySelectorAll('.event');
+      
+      events.forEach(event => {
+        event.addEventListener('mouseenter', function() {
+          this.classList.add('animate__pulse');
+        });
+        
+        event.addEventListener('mouseleave', function() {
+          this.classList.remove('animate__pulse');
+        });
+      });
+      
+      // Animate buttons on hover
+      const buttons = document.querySelectorAll('.button');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+          this.classList.add('animate__rubberBand');
+        });
+        
+        button.addEventListener('mouseleave', function() {
+          this.classList.remove('animate__rubberBand');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
