@@ -3,334 +3,313 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Promethean 2025 – Events by AI&DS</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Righteous&display=swap" rel="stylesheet">
+  <title>Promethean 2025 – AI&DS Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --primary: #ffbf00;
-      --secondary: #f2cf7e;
-      --accent: #ff9643;
-      --dark: #2a2d3e;
-      --light: #ffffff;
-      --gradient: linear-gradient(135deg, var(--primary), var(--accent));
-    }
-
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: var(--light);
-      color: var(--dark);
-      overflow-x: hidden;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 1.5rem;
-      background: var(--gradient);
-      color: white;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    header::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-      transform: rotate(30deg);
-      animation: shine 8s infinite linear;
-    }
-
-    @keyframes shine {
-      0% { transform: rotate(30deg) translate(-10%, -10%); }
-      100% { transform: rotate(30deg) translate(10%, 10%); }
-    }
-
-    h1, h2, h3 {
-      font-family: 'Righteous', cursive;
-      margin: 0;
+      background: linear-gradient(to bottom, #6e45e2, #88d3ce);
+      color: #fff;
+      padding: 30px 20px;
+      min-height: 100vh;
     }
 
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5em;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      animation: fadeInDown 1s ease-out;
     }
 
     .subtitle {
-      font-size: 1.3rem;
+      text-align: center;
+      margin-top: -30px;
+      margin-bottom: 30px;
+      font-size: 1.2em;
       opacity: 0.9;
-      margin-bottom: 0;
     }
 
-    .container {
+    .event-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-      max-width: 1400px;
+      gap: 25px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    .event {
-      background: var(--light);
+    .event-card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 25px;
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: all 0.4s ease;
-      position: relative;
-      z-index: 1;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+      animation: fadeInUp 0.8s ease-in;
     }
 
-    .event:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    .event-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.2);
     }
 
-    .event::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: var(--gradient);
+    .event-title {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .event img {
-      width: 100%;
-      height: 200px;
-      object-fit: contain;
-      background: #fff7e0;
-      padding: 1rem;
-      transition: all 0.4s ease;
+    .event-details {
+      font-size: 1em;
+      line-height: 1.6;
+      margin-bottom: 15px;
     }
 
-    .event:hover img {
-      transform: scale(1.05);
+    .event-details p {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .event-content {
-      padding: 1.5rem;
-      position: relative;
-    }
-
-    .event h2 {
-      margin-top: 0;
-      color: var(--primary);
-      font-size: 1.7rem;
-      margin-bottom: 1rem;
-    }
-
-    .event p {
-      margin: 0.5rem 0;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .event p strong {
-      color: var(--dark);
+    .event-details strong {
       font-weight: 600;
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin: 1rem 0;
+      gap: 8px;
+      margin: 15px 0;
     }
 
     .tag {
-      background: rgba(255, 191, 0, 0.1);
-      color: var(--primary);
-      padding: 0.3rem 0.8rem;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 4px 12px;
       border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.8em;
+      font-weight: 500;
     }
 
-    .button {
-      display: block;
-      margin: 1rem auto 0 auto;
+    .register-button {
+      margin-top: 10px;
       padding: 12px 25px;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      font-weight: 600;
+      background-color: #ff7e5f;
+      color: #fff;
       border: none;
+      border-radius: 50px;
       cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
-      text-align: center;
     }
 
-    .button:hover {
-      background: #ff7900;
+    .register-button:hover {
+      background-color: #ff6a45;
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(255, 126, 95, 0.4);
     }
 
     footer {
       text-align: center;
-      padding: 3rem 1rem;
-      background: var(--light);
-      color: var(--dark);
-      position: relative;
+      margin-top: 50px;
+      font-size: 0.95em;
+      color: rgba(255,255,255,0.8);
     }
 
-    footer::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: var(--gradient);
+    .social-handle {
+      margin: 15px 0;
+    }
+
+    .social-handle a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .social-handle a:hover {
+      color: #ff7e5f;
+      transform: scale(1.05);
     }
 
     .coordinators {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 20px;
       flex-wrap: wrap;
-      margin: 1.5rem 0;
+      margin: 20px 0;
     }
 
     .coordinator {
-      background: rgba(255,191,0,0.1);
-      padding: 1rem 1.5rem;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
+      background: rgba(255,255,255,0.1);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 0.9em;
     }
 
-    .coordinator:hover {
-      transform: scale(1.05);
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .instagram {
-      font-size: 1rem;
-      margin-top: 1rem;
-    }
-
-    .instagram a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .floating {
-      animation: floating 3s ease-in-out infinite;
-    }
-
-    @keyframes floating {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-
-    .pulse {
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(255, 126, 95, 0.7); }
-      70% { box-shadow: 0 0 0 15px rgba(255, 126, 95, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(255, 126, 95, 0); }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 768px) {
       h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
-
+      
       .subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
-
-      .container {
+      
+      .event-grid {
         grid-template-columns: 1fr;
-        padding: 1.5rem;
       }
-
+      
       .coordinators {
         flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-      }
-
-      .button {
-        width: 100%;
+        gap: 10px;
       }
     }
 
     @media (max-width: 480px) {
+      body {
+        padding: 20px 15px;
+      }
+      
       h1 {
         font-size: 1.8rem;
       }
-
-      .event h2 {
-        font-size: 1.4rem;
+      
+      .event-card {
+        padding: 20px;
+      }
+      
+      .event-title {
+        font-size: 1.3rem;
       }
     }
   </style>
 </head>
 <body>
-  <header class="animate__animated animate__fadeIn">
-    <h1>🔥 Promethean 2025</h1>
-    <p class="subtitle">Artificial Intelligence & Data Science Events</p>
-  </header>
+  <h1>🔥 Promethean 2025</h1>
+  <p class="subtitle">AI & Data Science Department Events</p>
 
-  <!-- Main content remains same -->
-
-  <footer class="animate__animated animate__fadeIn">
-    <h3>📞 Student Coordinators</h3>
-    <div class="coordinators">
-      <div class="coordinator">
-        <p>Ashlesha: 6302862336</p>
+  <div class="event-grid">
+    <!-- Escape Room -->
+    <div class="event-card" style="animation-delay: 0.1s">
+      <div class="event-title"><span>🧩</span> Escape Room</div>
+      <div class="event-details">
+        <p><strong>⏰ Time:</strong> 10:00 AM – 3:00 PM</p>
+        <p><strong>📍 Location:</strong> ELN Block, 4th Floor</p>
+        <p><strong>🏆 Category:</strong> Competitive Team Event</p>
       </div>
-      <div class="coordinator">
-        <p>Jaenith: 8688577146</p>
+      <div class="tags">
+        <span class="tag">AI Challenge</span>
+        <span class="tag">Puzzle Solving</span>
+        <span class="tag">Teamwork</span>
       </div>
+      <button class="register-button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScuNtiGROUCYZsCxXFuZbwRfbF0isgRRj43t7FIwZGsmZSTxA/viewform?usp=dialog', '_blank')">
+        <i class="fas fa-user-plus"></i> Register
+      </button>
     </div>
-    <p class="instagram">Follow us on Instagram: <a href="https://instagram.com/promethean_ai_ds" target="_blank">@promethean_ai_ds</a></p>
-    <p class="copyright">&copy; 2025 AI&DS Department | Promethean Festival</p>
+
+    <!-- Cipher Chronicles -->
+    <div class="event-card" style="animation-delay: 0.2s">
+      <div class="event-title"><span>🕵️</span> Cipher Chronicles</div>
+      <div class="event-details">
+        <p><strong>⏰ Time:</strong> 10:00 AM – 1:30 PM</p>
+        <p><strong>📍 Location:</strong> ELN Block, BVRIT</p>
+        <p><strong>🏆 Category:</strong> Competitive Coding</p>
+      </div>
+      <div class="tags">
+        <span class="tag">Cryptography</span>
+        <span class="tag">Problem Solving</span>
+        <span class="tag">Algorithmic</span>
+      </div>
+      <button class="register-button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSecsWmXaKEB-I09oiW5qOW8iYit9f9C9Is4VmD8We6w6jg8AQ/viewform?usp=dialog', '_blank')">
+        <i class="fas fa-user-plus"></i> Register
+      </button>
+    </div>
+
+    <!-- TechTangle -->
+    <div class="event-card" style="animation-delay: 0.3s">
+      <div class="event-title"><span>🧠</span> TechTangle</div>
+      <div class="event-details">
+        <p><strong>⏰ Time:</strong> 10:30 AM – 1:00 PM</p>
+        <p><strong>📍 Location:</strong> ELN Block</p>
+        <p><strong>🏆 Category:</strong> Tech Meme War</p>
+      </div>
+      <div class="tags">
+        <span class="tag">Humor</span>
+        <span class="tag">Creativity</span>
+        <span class="tag">Tech Culture</span>
+      </div>
+      <button class="register-button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfgJflT-ffwdM_LSzYaSGguVYi-6_a9Ugt774yWL4QafAmYhA/viewform', '_blank')">
+        <i class="fas fa-user-plus"></i> Register
+      </button>
+    </div>
+
+    <!-- Reel Craft -->
+    <div class="event-card" style="animation-delay: 0.4s">
+      <div class="event-title"><span>🎬</span> Reel Craft</div>
+      <div class="event-details">
+        <p><strong>⏰ Time:</strong> 10:00 AM – 3:00 PM</p>
+        <p><strong>📍 Location:</strong> ELN Block</p>
+        <p><strong>🏆 Category:</strong> Creative Competition</p>
+      </div>
+      <div class="tags">
+        <span class="tag">Storytelling</span>
+        <span class="tag">AI Prompts</span>
+        <span class="tag">Video</span>
+      </div>
+      <button class="register-button" onclick="window.open('https://forms.gle/wZCUv5ViYhWY7GyB7', '_blank')">
+        <i class="fas fa-user-plus"></i> Register
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="coordinators">
+      <div class="coordinator">Ashlesha: 6302862336</div>
+      <div class="coordinator">Jaenith: 8688577146</div>
+    </div>
+    
+    <div class="social-handle">
+      <a href="https://instagram.com/promethean_ai_ds" target="_blank">
+        <i class="fab fa-instagram"></i> @promethean_ai_ds
+      </a>
+    </div>
+    
+    <p>© 2025 AI&DS Department | Promethean Festival</p>
   </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const events = document.querySelectorAll('.event');
-
-      events.forEach(event => {
-        event.addEventListener('mouseenter', function() {
-          this.classList.add('animate__pulse');
-        });
-
-        event.addEventListener('mouseleave', function() {
-          this.classList.remove('animate__pulse');
-        });
-      });
-
-      const buttons = document.querySelectorAll('.button');
-      buttons.forEach(button => {
-        button.addEventListener('mouseenter', function() {
-          this.classList.add('animate__rubberBand');
-        });
-
-        button.addEventListener('mouseleave', function() {
-          this.classList.remove('animate__rubberBand');
-        });
-      });
-    });
-  </script>
 </body>
 </html>
